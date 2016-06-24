@@ -1,6 +1,7 @@
 import React from 'react';
-import Fretboard from './lib/Fretboard.js';
+import ChordView from './lib/ChordView.js';
 import Data from './lib/Data.js';
+import Nav from './lib/Nav.js';
 
 class App extends React.Component {
   constructor() {
@@ -29,30 +30,9 @@ class App extends React.Component {
     return (
       <div>
         <Nav update_note={update_note} update_display_type={update_display_type} chords={state.chords} />
-        <p>{this.state.note} {this.state.display_type}</p>
-        <Fretboard scale={Data.scales()[state.note]} note_indexes={Data.note_indexes()[state.display_type]}/>
+        <ChordView note={state.note} display_type={state.display_type}/>
       </div>
     )
-  }
-}
-
-class Nav extends React.Component {
-  render() {
-    var props = this.props;
-    var note_links = Data.notes().map(function(note) {
-      return <Link text={note} ref={note} update={ props.update_note } key={note}/>
-    });
-    var chord_links = Data.display_types().map(function(chord) {
-      return <Link text={chord} ref={chord} update={props.update_display_type} key={chord}/>
-    });
-
-    return <div>{note_links}<br/><br/>{chord_links}</div>
-  }
-}
-
-class Link extends React.Component {
-  render() {
-    return <a href="#" onClick={this.props.update} >{this.props.text}</a>
   }
 }
 
