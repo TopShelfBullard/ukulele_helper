@@ -1,0 +1,11 @@
+a {
+    padding: 5px;
+    display: inline-block;
+}
+
+.fretboard {
+    font-size: 9px;
+    max-width: 125px;
+    min-width: 100px;
+    text-align: center;
+}
