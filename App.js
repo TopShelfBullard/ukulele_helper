@@ -8,7 +8,7 @@ class App extends React.Component {
     super();
     this.state = {
       note: Data.notes()[0],
-      display_type: Data.display_types()[0]
+      display_type: Data.display_types(Data.notes()[0])[0]
     }
     this.update_note = this.update_note.bind(this);
     this.update_display_type = this.update_display_type.bind(this);
@@ -29,7 +29,7 @@ class App extends React.Component {
 
     return (
       <div>
-        <Nav update_note={update_note} update_display_type={update_display_type} chords={state.chords} />
+        <Nav update_note={update_note} update_display_type={update_display_type} note={state.note}/>
         <ChordView note={state.note} display_type={state.display_type}/>
       </div>
     )
